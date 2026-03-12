@@ -66,9 +66,24 @@
     </div>
   </div>
 
+  <!-- Change Password Modal -->
+  <div id="changePasswordModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Change Admin Password</h2>
+      <input type="password" id="newPasswordInput" placeholder="New password (min 4 chars)" onkeydown="if(event.key==='Enter')changePassword()">
+      <input type="password" id="confirmPasswordInput" placeholder="Confirm new password" onkeydown="if(event.key==='Enter')changePassword()">
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="changePassword()">Change</button>
+        <button class="btn btn-secondary" onclick="closeModal('changePasswordModal')">Cancel</button>
+      </div>
+      <p id="changePasswordError" class="error hidden"></p>
+    </div>
+  </div>
+
   <!-- Admin Controls -->
   <div id="adminControls" class="admin-controls hidden">
     <button class="btn btn-primary" onclick="showAddMember()">+ Add Member</button>
+    <button class="btn btn-admin" onclick="showChangePassword()">Change Password</button>
   </div>
 
   <!-- Payment Grid -->

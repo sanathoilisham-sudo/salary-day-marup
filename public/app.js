@@ -116,6 +116,51 @@ async function togglePayment(memberIndex, monthIndex) {
   }
 }
 
+// ---------- Change Password ----------
+function showChangePassword() {
+  document.getElementById('changePasswordModal').classList.remove('hidden');
+  document.getElementById('newPasswordInput').value = '';
+  document.getElementById('confirmPasswordInput').value = '';
+  document.getElementById('changePasswordError').classList.add('hidden');
+  setTimeout(() => document.getElementById('newPasswordInput').focus(), 100);
+}
+
+async function changePassword() {
+  const newPw = document.getElementById('newPasswordInput').value;
+  const confirmPw = document.getElementById('confirmPasswordInput').value;
+  const errorEl = document.getElementById('changePasswordError');
+
+  if (newPw.length < 4) {
+    errorEl.textContent = 'Password must be at least 4 characters';
+    errorEl.classList.remove('hidden');
+    return;
+  }
+
+  if (newPw !== confirmPw) {
+    errorEl.textContent = 'Passwords do not match';
+    errorEl.classList.remove('hidden');
+    return;
+  }
+
+  const res = await fetch('/api/admin/change-password', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-admin-password': adminPassword
+    },
+    body: JSON.stringify({ newPassword: newPw })
+  });
+
+  if (res.ok) {
+    adminPassword = newPw;
+    closeModal('changePasswordModal');
+    alert('Password changed successfully!');
+  } else {
+    errorEl.textContent = 'Failed to change password';
+    errorEl.classList.remove('hidden');
+  }
+}
+
 // ---------- Render ----------
 function getMonthLabel(startMonth, offset) {
   const [year, month] = startMonth.split('-').map(Number);
