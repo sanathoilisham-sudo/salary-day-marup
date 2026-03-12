@@ -1,0 +1,388 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.sub-info {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn-admin {
+  background: #0f3460;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-admin:hover { background: #1a4a7a; }
+
+.btn-logout {
+  background: #e94560;
+  color: #fff;
+}
+
+.btn-primary {
+  background: #0f3460;
+  color: #fff;
+}
+
+.btn-primary:hover { background: #1a4a7a; }
+
+.btn-secondary {
+  background: #ddd;
+  color: #333;
+}
+
+.btn-danger {
+  background: #e94560;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+}
+
+.hidden { display: none !important; }
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 20px 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.card-label {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.card-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.card-sub {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+.month-select {
+  width: 100%;
+  padding: 6px 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  background: #f8f9ff;
+  margin-bottom: 6px;
+  outline: none;
+  cursor: pointer;
+}
+
+.month-select:focus {
+  border-color: #0f3460;
+}
+
+/* Admin Controls */
+.admin-controls {
+  padding: 0 30px 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Table */
+.table-wrapper {
+  padding: 0 30px 30px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  font-size: 0.85rem;
+}
+
+thead {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+th {
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+
+th:first-child {
+  text-align: left;
+  padding-left: 16px;
+  min-width: 180px;
+}
+
+th:nth-child(2) {
+  min-width: 120px;
+}
+
+th:last-child {
+  min-width: 80px;
+}
+
+td {
+  padding: 10px 8px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+td:first-child {
+  text-align: left;
+  padding-left: 16px;
+  font-weight: 600;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background: #f8f9ff;
+}
+
+/* Payment Cells */
+.cell-paid {
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-weight: 700;
+  border-radius: 4px;
+  margin: 2px;
+}
+
+.cell-unpaid {
+  background: #fff3e0;
+  color: #bf360c;
+  border-radius: 4px;
+  margin: 2px;
+}
+
+.cell-clickable {
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.cell-clickable:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.member-name-cell {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.member-number {
+  color: #aaa;
+  font-weight: 400;
+  font-size: 0.75rem;
+  min-width: 22px;
+  margin-top: 2px;
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.member-name-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.role-tag {
+  background: #e3f2fd;
+  color: #0f3460;
+  font-size: 0.6rem;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.member-phone {
+  font-size: 0.7rem;
+  color: #999;
+  font-weight: 400;
+}
+
+.receiving-cell {
+  text-align: left !important;
+  white-space: nowrap;
+}
+
+.recv-month {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.recv-amount {
+  font-size: 0.7rem;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.member-paid-count {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 500;
+}
+
+/* Legend */
+.legend {
+  padding: 0 30px 30px;
+  display: flex;
+  gap: 20px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.dot.paid { background: #e8f5e9; border: 2px solid #2e7d32; }
+.dot.unpaid { background: #fff3e0; border: 2px solid #bf360c; }
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 90%;
+  max-width: 380px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal-content input:focus {
+  border-color: #0f3460;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.error {
+  color: #e94560;
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header { padding: 16px; }
+  header h1 { font-size: 1.2rem; }
+  .summary-cards { padding: 16px; gap: 10px; }
+  .table-wrapper { padding: 0 10px 20px; }
+  .admin-controls { padding: 0 16px 10px; }
+  .legend { padding: 0 16px 20px; }
+  th, td { padding: 8px 5px; font-size: 0.75rem; }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contribution Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1 id="groupName">Group Contribution Tracker</h1>
+      <p id="subInfo" class="sub-info"></p>
+    </div>
+    <div class="header-right">
+      <button id="adminBtn" class="btn btn-admin" onclick="showLogin()">Admin Login</button>
+      <button id="logoutBtn" class="btn btn-logout hidden" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Admin Login Modal -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Admin Login</h2>
+      <input type="password" id="passwordInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')login()">
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="login()">Login</button>
+        <button class="btn btn-secondary" onclick="closeModal('loginModal')">Cancel</button>
+      </div>
+      <p id="loginError" class="error hidden">Wrong password</p>
+    </div>
+  </div>
+
+  <!-- Add Member Modal -->
+  <div id="addMemberModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Add New Member</h2>
+      <input type="text" id="newMemberName" placeholder="Member name" onkeydown="if(event.key==='Enter')addMember()">
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="addMember()">Add</button>
+        <button class="btn btn-secondary" onclick="closeModal('addMemberModal')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="summary-cards">
+    <div class="card">
+      <div class="card-label">Total Members</div>
+      <div class="card-value" id="totalMembers">0</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Current Month</div>
+      <div class="card-value" id="currentMonth">-</div>
+    </div>
+    <div class="card">
+      <div class="card-label" id="collectedLabel">Collected (Current Month)</div>
+      <div class="card-value" id="monthCollected">0</div>
+      <div class="card-sub" id="monthPending"></div>
+    </div>
+    <div class="card">
+      <div class="card-label">View Month</div>
+      <select id="monthSelector" class="month-select" onchange="render()"></select>
+      <div class="card-value" id="selectedCollected">0</div>
+      <div class="card-sub" id="selectedPending"></div>
+    </div>
+  </div>
+
+  <!-- Admin Controls -->
+  <div id="adminControls" class="admin-controls hidden">
+    <button class="btn btn-primary" onclick="showAddMember()">+ Add Member</button>
+  </div>
+
+  <!-- Payment Grid -->
+  <div class="table-wrapper">
+    <table id="paymentTable">
+      <thead id="tableHead"></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span class="legend-item"><span class="dot paid"></span> Paid</span>
+    <span class="legend-item"><span class="dot unpaid"></span> Not Paid</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
