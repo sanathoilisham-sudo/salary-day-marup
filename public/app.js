@@ -254,7 +254,16 @@ function render() {
   appData.members.forEach((member, mi) => {
     const paidCount = member.payments.filter(p => p).length;
     const roleTag = member.role ? `<span class="role-tag">${escapeHtml(member.role)}</span>` : '';
-    const phoneStr = member.phone ? `<span class="member-phone">${escapeHtml(member.phone)}</span>` : '';
+    let phoneStr = '';
+    if (member.phone) {
+      const cleanPhone = member.phone.replace(/\D/g, '');
+      const waPhone = cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone;
+      phoneStr = `<div class="member-phone-row">
+        <span class="member-phone">${escapeHtml(member.phone)}</span>
+        <a href="tel:+91${cleanPhone}" class="phone-action call" title="Call">&#128222;</a>
+        <a href="https://wa.me/${waPhone}" target="_blank" class="phone-action wa" title="WhatsApp">&#128172;</a>
+      </div>`;
+    }
 
     bodyHTML += '<tr>';
     bodyHTML += `<td>

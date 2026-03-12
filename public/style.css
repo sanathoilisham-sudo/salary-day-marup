@@ -288,10 +288,43 @@ tr:hover td {
   text-transform: uppercase;
 }
 
+.member-phone-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .member-phone {
   font-size: 0.7rem;
   color: #999;
   font-weight: 400;
+}
+
+.phone-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 0.7rem;
+  line-height: 1;
+  transition: transform 0.15s;
+}
+
+.phone-action:hover {
+  transform: scale(1.2);
+}
+
+.phone-action.call {
+  background: #e3f2fd;
+  color: #0f3460;
+}
+
+.phone-action.wa {
+  background: #e8f5e9;
+  color: #25d366;
 }
 
 .receiving-cell {
